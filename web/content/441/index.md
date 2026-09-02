@@ -104,7 +104,7 @@ elements requires as much stack capacity as there are inputs or outputs.  The
 smallest possible input is 41 bytes (allowing almost 24,390 inputs), and the
 smallest possible output is 9 bytes (allowing almost 111,111 outputs).
 However, empty outputs are rare and not economically interesting.  Thus we
-consider smallest non-OP_RETURN standard output script, which is P2WPKH at 22
+consider the smallest non-OP_RETURN standard output script, which is P2WPKH at 22
 bytes, giving a minimum output size of 31 bytes, allowing 32,258 outputs in a
 maximally-sized transaction.
 
@@ -333,7 +333,7 @@ routine as OP_DOWNSHIFT.
 |OP_2DIV|142|<nowiki>[A]</nowiki>|Divide A by 2||wordspan(A) * 4|OTHER|
 |OP_MUL|149|<nowiki>[A B]</nowiki>|Multiply A by B||(length(A) + length(B)) * 3 + wordspan(A) / 8 * wordspan(B) * 27  (BEWARE OVERFLOW)|See Appendix|
 |OP_DIV|150|<nowiki>[A B]</nowiki>|Divide A by (non-zero) B||wordspan(A) * 18 + wordspan(B) * 4 + wordspan(A)^2 * 2 / 3  (BEWARE OVERFLOW)|See Appendix|
-|OP_MOD|151|<nowiki>[A B]</nowiki>|Replace A with remainder when A divided by (non-zero) B||wordspan(A) * 18 + wordspan(B) * 4 + wordspan(A)^2 * 2 / 3  (BEWARE OVERFLOW)|See Appendix|
+|OP_MOD|151|<nowiki>[A B]</nowiki>|Replace A with the remainder when A is divided by (non-zero) B||wordspan(A) * 18 + wordspan(B) * 4 + wordspan(A)^2 * 2 / 3  (BEWARE OVERFLOW)|See Appendix|
 
 
 <h5>Rationale</h5>
@@ -449,7 +449,7 @@ Work in progress:
 
 
 *  0.2.2: 2026-06-15: clarify wordspan costs, OP_RIGHT semantics, OP_UPSHIFT unaligned cost, CLTV/CSV bounds, and final success-check cost.
-*  0.2.1: 2023-03-27: fix OP_MUL cost to round length(B) up
+*  0.2.1: 2026-03-27: fix OP_MUL cost to round length(B) up
 *  0.2.0: 2025-02-21: change costs to match those in varops budget
 *  0.1.0: 2025-09-27: first public posting
 
@@ -520,7 +520,7 @@ For division, the steps break down like so:
 1.  Bit shift both operands to set top bit of B (OP_UPSHIFT, without overflow for B): cost = wordspan(A) * 6 + wordspan(B) * 4
 
 
-1.  Trim trailing bytes.  This costs according to the number of byte removed, but since that is subtractive on future costs, we ignore it.
+1.  Trim trailing bytes.  This costs according to the number of bytes removed, but since that is subtractive on future costs, we ignore it.
 
 
 1.  If B is longer, the answer is 0 already.  So assume A is longer from now on (or equal length).
