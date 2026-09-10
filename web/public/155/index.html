@@ -124,7 +124,7 @@
   Type: Specification
   Assigned: 2019-02-27
   License: BSD-2-Clause
-  Version: 2.1.0
+  Version: 2.1.1
 </code></pre>
 <h2>Introduction</h2>
 <h3>Abstract</h3>
@@ -183,7 +183,12 @@ Clients SHOULD reject messages with longer addresses, irrespective of the networ
 <p>The <code>sendaddrv2</code> message MUST only be sent in response to the <code>version</code> message from a peer and prior to sending the <code>verack</code> message.</p>
 <p>For older peers, that did not emit <code>sendaddrv2</code>, keep sending the legacy <code>addr</code> message, ignoring addresses with the newly introduced address types.</p>
 <h2>Reference implementation</h2>
-<p>The reference implementation is available at (to be done)</p>
+<p>Original reference implementation in Bitcoin Core:</p>
+<ul>
+<li>https://github.com/bitcoin/bitcoin/issues/18884</li>
+<li>https://github.com/bitcoin/bitcoin/pull/19954</li>
+<li>https://github.com/bitcoin/bitcoin/pull/20119</li>
+</ul>
 <h2>Acknowledgements</h2>
 <ul>
 <li>
@@ -220,6 +225,11 @@ Clients SHOULD reject messages with longer addresses, irrespective of the networ
 <p>Yggdrasil addresses are simply IPv6 addresses in the <code>0200::/7</code> range<sup id="cite_ref_6"><a href="#cite_ref_6">6</a></sup>. They MUST be sent with the <code>YGGDRASIL</code> network ID.</p>
 <h2> Changelog </h2>
 <ul>
+<li>2.1.1 (2026-08-08):
+<ul>
+<li>Add links to reference implementation.</li>
+</ul>
+</li>
 <li>2.1.0 (2026-08-03):
 <ul>
 <li>Document that IPv4-in-IPv6 range MUST NOT be sent with the IPV6 network ID and SHOULD be ignored on receive.</li>
@@ -255,7 +265,7 @@ Clients SHOULD reject messages with longer addresses, irrespective of the networ
             <div data-pagefind-ignore class="w-full flex flex-col items-center space-y-2 text-center">
                 <div class="flex items-center space-x-2">
                     <p class="font-bold">Updated</p>
-                    <p class="font-bold">2026-09-09</p>
+                    <p class="font-bold">2026-09-10</p>
                 </div>
                 <p>See an issue with rendering or formatting? Submit an issue on <a href="https://github.com/nickmonad/bips.dev" target="_blank">GitHub</a></p>
                 <p>Do you find this site useful? Please consider <a href="https://buy.tryspeed.com/plink_live_lyek4a2yW2Sn2wfA" target="_blank">donating</a> some sats to support ongoing development.</p>
