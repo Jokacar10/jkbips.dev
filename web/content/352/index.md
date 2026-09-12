@@ -230,7 +230,7 @@ A silent payment address is constructed in the following manner:
         *  The 66-byte concatenation of the receiver's public keys, _ser<sub>P</sub>(B<sub>scan</sub>) || ser<sub>P</sub>(B<sub>m</sub>)_
 
 
-Note: <a href="/173" target="_blank">BIP173</a> imposes a 90 character limit for Bech32 segwit addresses and limits versions to 0 through 16, whereas a silent payment address requires _at least_ 117 characters<ref name="why_117_chars"> ** Why do silent payment addresses need at least 117 characters?** A silent payment address is a bech32m encoding comprised of the following parts:
+Note: <a href="/173" target="_blank">BIP173</a> imposes a 90 character limit for Bech32 segwit addresses and limits versions to 0 through 16, whereas a silent payment address requires _at least_ 116 characters<ref name="why_116_chars"> ** Why do silent payment addresses need at least 116 characters?** A silent payment address is a bech32m encoding comprised of the following parts:
 
 
 *  HRP <a href="2-3" target="_blank">characters</a>
@@ -241,7 +241,7 @@ Note: <a href="/173" target="_blank">BIP173</a> imposes a 90 character limit for
 
 
 
-For a silent payments v0 address, this results in a 117-character address when using a 3-character HRP. Future versions of silent payment addresses may add to the payload, which is why a 1023-character limit is suggested.</ref> and allows versions up to 31. Additionally, since higher versions may add to the data field, it is recommended implementations use a limit of 1023 characters (see <a href="/173" target="_blank">BIP173: Checksum design</a> for more details).
+For a silent payments v0 address, this results in a 116-character address when using the 2-character mainnet HRP ("sp"), or a 117-character address when using the 3-character testnet HRP ("tsp"). Future versions of silent payment addresses may add to the payload, which is why a 1023-character limit is suggested.</ref> and allows versions up to 31. Additionally, since higher versions may add to the data field, it is recommended implementations use a limit of 1023 characters (see <a href="/173" target="_blank">BIP173: Checksum design</a> for more details).
 
 <h3> Inputs For Shared Secret Derivation </h3>
 
